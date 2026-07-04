@@ -1,31 +1,108 @@
-# Estudos em Node.js
+# Node do Zero
 
-Repositório com projetos desenvolvidos durante meus estudos no ecossistema Node.js.
+API REST simples para cadastro, listagem, atualização e remoção de vídeos.
 
-A ideia aqui é reunir pequenas aplicações, APIs e experimentos práticos para consolidar fundamentos de backend, HTTP, banco de dados, organização de código e ferramentas comuns do ambiente Node.
+Este projeto faz parte dos meus estudos em Node.js e tem como foco praticar a criação de servidores HTTP, rotas REST, integração com PostgreSQL e organização básica de uma aplicação backend.
 
-## Projetos
+## Tecnologias
 
-| Projeto | Descrição | Tecnologias |
-| --- | --- | --- |
-| [node_do_zero](./node_do_zero) | API REST para cadastro e gerenciamento de vídeos. | Node.js, Fastify, PostgreSQL, Neon |
+- Node.js
+- Fastify
+- PostgreSQL
+- Neon Database
+- Dotenv
 
-## Objetivos de estudo
+## Funcionalidades
 
-- Criar APIs HTTP com Node.js.
-- Trabalhar com rotas, parâmetros, query params e corpo de requisições.
-- Persistir dados em banco PostgreSQL.
-- Separar responsabilidades entre servidor, rotas e camada de banco.
-- Praticar scripts, variáveis de ambiente e fluxo básico de desenvolvimento.
+- Criar um vídeo.
+- Listar todos os vídeos.
+- Buscar vídeos pelo título.
+- Atualizar um vídeo existente.
+- Remover um vídeo.
 
-## Como navegar
+## Requisitos
 
-Cada pasta possui seu próprio README com instruções de instalação, configuração e execução.
+- Node.js instalado.
+- Uma URL de conexão PostgreSQL, como a fornecida pelo Neon.
 
-Para começar pelo projeto principal:
+## Configuração
+
+Instale as dependências:
 
 ```bash
-cd node_do_zero
 npm install
+```
+
+Crie um arquivo `.env` com base no `.env.example`:
+
+```env
+DATABASE_URL='postgresql://usuario:senha@host/database?sslmode=require'
+```
+
+Crie a tabela no banco:
+
+```bash
+node create-table.js
+```
+
+## Executando
+
+Modo desenvolvimento, com reinicio automático:
+
+```bash
 npm run dev
 ```
+
+Modo padrão:
+
+```bash
+npm start
+```
+
+O servidor será iniciado em:
+
+```txt
+http://localhost:3333
+```
+
+## Rotas
+
+| Método | Rota | Descrição |
+| --- | --- | --- |
+| `POST` | `/videos` | Cria um novo vídeo. |
+| `GET` | `/videos` | Lista todos os vídeos. |
+| `GET` | `/videos?search=node` | Busca vídeos pelo título. |
+| `PUT` | `/videos/:id` | Atualiza um vídeo pelo ID. |
+| `DELETE` | `/videos/:id` | Remove um vídeo pelo ID. |
+
+## Exemplo de criação
+
+```http
+POST http://localhost:3333/videos
+Content-Type: application/json
+
+{
+  "title": "video node",
+  "description": "Esse é um vídeo sobre Node.js",
+  "duration": 180
+}
+```
+
+## Estrutura
+
+```txt
+node_do_zero/
+├── create-table.js
+├── database-memory.js
+├── database-portgres.js
+├── db.js
+├── routes.http
+├── server.js
+└── package.json
+```
+
+## Observações
+
+- O arquivo `routes.http` contém exemplos de requisições para testar a API.
+- O projeto possui uma implementação em memória em `database-memory.js`, útil para estudos e testes locais sem banco.
+- A implementação ativa atualmente usa PostgreSQL em `database-portgres.js`.
