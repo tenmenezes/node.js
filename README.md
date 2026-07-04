@@ -20,6 +20,7 @@ Este projeto faz parte dos meus estudos em Node.js e tem como foco praticar a cr
 - Atualizar um vídeo existente.
 - Remover um vídeo.
 
+## Preview - [Node do Zero](https://node-do-zero-x94w.onrender.com/videos)
 ## Requisitos
 
 - Node.js instalado.
