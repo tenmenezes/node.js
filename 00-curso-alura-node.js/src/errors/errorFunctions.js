@@ -1,9 +1,7 @@
-function handleErros(err) {
-    if(err.code === 'ENOENT'){
-        throw new Error('File not found')
-    } else {
-        return 'Application error'
+export default function handleErrors(err) {
+    if (err.code === 'ENOENT') {
+        return 'File not found'
     }
-}
 
-module.exports = handleErros
+    return 'Application error'
+}

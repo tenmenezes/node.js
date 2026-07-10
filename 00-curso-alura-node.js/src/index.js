@@ -1,18 +1,3 @@
-const fs = require('fs')
-const handleErrors = require('./errors/errorFunctions.js')
-
-const path_file = process.argv
-const link = path_file[2]
-
-fs.readFile(link, 'utf-8', (err, text) => {
-    try {    
-        if (err) throw err
-        countWords(text)
-    } catch (err) {
-        handleErrors(err)
-    }
-})
-
 function clearWords(word) {
     return word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '')
 }
@@ -26,8 +11,9 @@ function verifyDuplicateWords(text) {
     const result = {}
 
     listWords.forEach(word => {
-        if (word.length >= 3) {
-            const cleanWord = clearWords(word)
+        const cleanWord = clearWords(word)
+
+        if (cleanWord.length >= 3) {
             result[cleanWord] = (result[cleanWord] || 0) + 1
         }
     })
@@ -35,15 +21,16 @@ function verifyDuplicateWords(text) {
     return result
 }
 
-function countWords(text) {
-    const extrectedParagraph = extractParagraphs(text)
+export function countWords(text) {
+    const extractedParagraphs = extractParagraphs(text)
 
-    const count = paragraphs.flatMap((paragraph) => {
-        if (!paragraph) 
+    const count = extractedParagraphs.flatMap((paragraph) => {
+        if (!paragraph) {
             return []
+        }
 
         return verifyDuplicateWords(paragraph)
     })
 
-    console.log(count)
+    return count
 }
