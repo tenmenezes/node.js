@@ -1,36 +1,36 @@
 function clearWords(word) {
-    return word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '')
+  return word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
 }
 
 function extractParagraphs(text) {
-    return text.toLowerCase().split('\n')
+  return text.toLowerCase().split("\n");
 }
 
 function verifyDuplicateWords(text) {
-    const listWords = text.split(' ')
-    const result = {}
+  const listWords = text.split(" ");
+  const result = {};
 
-    listWords.forEach(word => {
-        const cleanWord = clearWords(word)
+  listWords.forEach((word) => {
+    const cleanWord = clearWords(word);
 
-        if (cleanWord.length >= 3) {
-            result[cleanWord] = (result[cleanWord] || 0) + 1
-        }
-    })
+    if (cleanWord.length >= 3) {
+      result[cleanWord] = (result[cleanWord] || 0) + 1;
+    }
+  });
 
-    return result
+  return result;
 }
 
 export function countWords(text) {
-    const extractedParagraphs = extractParagraphs(text)
+  const extractedParagraphs = extractParagraphs(text);
 
-    const count = extractedParagraphs.flatMap((paragraph) => {
-        if (!paragraph) {
-            return []
-        }
+  const count = extractedParagraphs.flatMap((paragraph) => {
+    if (!paragraph) {
+      return [];
+    }
 
-        return verifyDuplicateWords(paragraph)
-    })
+    return verifyDuplicateWords(paragraph);
+  });
 
-    return count
+  return count;
 }
