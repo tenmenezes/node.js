@@ -1,4 +1,4 @@
-#  ![Docker icon](https://skillicons.dev/icons?i=docker) Curso Alura Docker
+#  ![Docker icon](https://skillicons.dev/icons?i=docker) Meus estudos em Docker
 
 Anotações reorganizadas do curso de Docker, separadas por assunto para facilitar revisão, consulta rápida e prática no terminal.
 
