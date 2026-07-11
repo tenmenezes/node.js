@@ -12,6 +12,7 @@ Anotações reorganizadas do curso de Docker, separadas por assunto para facilit
 | 4 | [Containers na prática](./04-containers-na-pratica.md) | `run`, `start`, `stop`, `exec`, logs, portas e ciclo de vida |
 | 5 | [Persistência, redes e Compose](./05-persistencia-redes-e-compose.md) | Volumes, bind mounts, networks, variáveis de ambiente e Docker Compose |
 | 6 | [Referência de comandos](./06-referencia-de-comandos.md) | Cola de comandos para estudo e revisão rápida |
+| 7 | [Comandos descobertos](./07-comandos-descobertos.md) | Comandos e comportamentos encontrados na prática, com exercícios resolvidos |
 
 ## Fluxo mental principal
 
