@@ -14,6 +14,18 @@ flowchart LR
     R --> I[Imagens]
 ```
 
+<img src="./images-example/Docker-Architecture.webp" alt="Arquitetura do Docker com client, host, daemon, registry, imagens e containers" width="720">
+
+Essa imagem ajuda a visualizar o caminho completo: o comando sai do Docker Client, chega ao Docker Daemon no host e o Daemon decide se precisa criar container, usar uma imagem local, baixar uma imagem do registry ou gerenciar recursos como volumes e redes.
+
+Leitura rápida da imagem:
+
+```text
+Client -> Daemon -> Host
+Daemon -> Imagens, containers, volumes e redes
+Daemon <-> Registry quando precisa baixar ou publicar imagens
+```
+
 ## Host
 
 A máquina hospedeira, ou host, é onde o Docker está rodando.
@@ -149,6 +161,29 @@ python:3.12
 | --- | --- |
 | `docker pull ubuntu` | Baixa uma imagem de um registry |
 | `docker push meu-usuario/minha-imagem:1.0` | Envia uma imagem local para um registry |
+
+## Publicando no Docker Hub
+
+Para publicar uma imagem no Docker Hub, primeiro faça login usando seu usuário e um token de acesso pessoal criado nas configurações da conta.
+
+```bash
+docker login -u nome-do-usuario
+```
+
+Depois envie a imagem:
+
+```bash
+docker push usuario/projeto:1.0
+```
+
+Se a imagem local foi criada com outro nome, crie uma nova tag apontando para o usuário correto do Docker Hub:
+
+```bash
+docker tag usuario/projeto:1.0 usuario-correto/projeto:1.0
+docker push usuario-correto/projeto:1.0
+```
+
+O nome antes da barra precisa bater com o usuário ou organização que tem permissão para publicar naquele repositório.
 
 ## Resumo mental
 

@@ -13,6 +13,7 @@ Anotações reorganizadas do curso de Docker, separadas por assunto para facilit
 | 5 | [Persistência, redes e Compose](./05-persistencia-redes-e-compose.md) | Volumes, bind mounts, networks, variáveis de ambiente e Docker Compose |
 | 6 | [Referência de comandos](./06-referencia-de-comandos.md) | Cola de comandos para estudo e revisão rápida |
 | 7 | [Comandos descobertos](./07-comandos-descobertos.md) | Comandos e comportamentos encontrados na prática, com exercícios resolvidos |
+| 8 | [Infraestrutura e cloud](./08-infra-e-cloud.md) | AWS Elastic Beanstalk, `Dockerrun.aws.json`, Compose no All Books e Kubernetes |
 
 ## Fluxo mental principal
 
@@ -50,6 +51,7 @@ As imagens de apoio ficam em [`images-example`](./images-example/):
 
 - [`vm-example.jpg`](./images-example/vm-example.jpg): comparação visual da virtualização com VM.
 - [`docker_images_containers_example.png`](./images-example/docker_images_containers_example.png): comparação visual da conteinerização.
+- [`Docker-Architecture.webp`](./images-example/Docker-Architecture.webp): fluxo entre Docker Client, Daemon, host, registry, imagens, containers, volumes e redes.
 
 ## Atalho para praticar
 

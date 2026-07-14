@@ -6,10 +6,11 @@
 | --- | --- |
 | `docker ps` | Lista containers rodando |
 | `docker ps -a` | Lista todos os containers, inclusive parados |
-| `docker images` | Lista imagens baixadas |
+| `docker images` ou `docker image ls` | Lista imagens baixadas |
 | `docker logs <container>` | Mostra logs do container |
 | `docker logs -f <container>` | Acompanha logs em tempo real |
 | `docker inspect <container>` | Mostra detalhes completos do container |
+| `docker inspect <image>` | Mostra metadados completos de uma imagem |
 
 ## Containers
 
@@ -34,17 +35,28 @@
 | `docker pull ubuntu` | Baixa uma imagem |
 | `docker build -t minha-api .` | Cria uma imagem a partir do Dockerfile |
 | `docker build -t minha-api:1.0 .` | Cria uma imagem com tag de versão |
+| `docker history <image>` | Mostra as camadas de uma imagem |
 | `docker rmi ubuntu` | Remove uma imagem |
 | `docker push usuario/imagem:tag` | Envia imagem para um registry |
 
-## Portas, volumes e variáveis
+## Portas e variáveis
 
 | Comando | Uso |
 | --- | --- |
 | `docker run -p 8080:80 nginx` | Mapeia porta do host para porta do container |
-| `docker run -v dados:/var/lib/postgresql/data postgres` | Usa volume nomeado |
-| `docker run -v $(pwd):/app node:20` | Usa bind mount com a pasta atual |
 | `docker run -e POSTGRES_PASSWORD=123456 postgres` | Define variável de ambiente |
+
+## Volumes e mounts
+
+| Comando | Uso |
+| --- | --- |
+| `docker volume ls` | Lista volumes gerenciados pelo Docker |
+| `docker volume create novo-volume` | Cria um volume nomeado |
+| `docker run -v dados:/var/lib/postgresql/data postgres` | Usa volume nomeado |
+| `docker run --mount type=volume,source=novo-volume,target=/app ubuntu bash` | Usa volume com sintaxe explícita |
+| `docker run -v $(pwd):/app node:20` | Usa bind mount com a pasta atual |
+| `docker run --mount type=bind,source=/caminho/no/host,target=/app ubuntu bash` | Usa bind mount com sintaxe explícita |
+| `docker run --mount type=tmpfs,target=/app ubuntu bash` | Usa tmpfs mount em memória |
 
 ## Limpeza
 
